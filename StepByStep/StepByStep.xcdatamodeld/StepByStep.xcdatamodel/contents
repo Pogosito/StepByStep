@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17511" systemVersion="20F71" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Exercise" representedClassName="Exercise" syncable="YES">
+        <attribute name="nameOfExercise" attributeType="String"/>
+        <relationship name="skeletons" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Skeleton" inverseName="exercise" inverseEntity="Skeleton"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="nameOfExercise"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="Joint" representedClassName="Joint" syncable="YES">
+        <attribute name="jointName" attributeType="String"/>
+        <attribute name="x" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="y" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <relationship name="skeleton" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Skeleton" inverseName="joints" inverseEntity="Skeleton"/>
+    </entity>
+    <entity name="Skeleton" representedClassName="Skeleton" syncable="YES">
+        <attribute name="image" attributeType="Binary"/>
+        <relationship name="exercise" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Exercise" inverseName="skeletons" inverseEntity="Exercise"/>
+        <relationship name="joints" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Joint" inverseName="skeleton" inverseEntity="Joint"/>
+    </entity>
+    <elements>
+        <element name="Exercise" positionX="243.436767578125" positionY="-5.4166259765625" width="128" height="59"/>
+        <element name="Joint" positionX="108" positionY="36" width="128" height="89"/>
+        <element name="Skeleton" positionX="-64.102783203125" positionY="-17.70864868164062" width="128" height="74"/>
+    </elements>
+</model>
